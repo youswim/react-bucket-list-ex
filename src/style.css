@@ -1,48 +1,36 @@
 .App {
-  display: flex;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  padding: 16px;
+  min-height: 100vh;
+  background-color: #eee;
+  padding: 32px;
   box-sizing: border-box;
 }
-.outter {
+.container {
+  max-width: 350px;
+  min-height: 80vh;
+  background-color: #fff;
+  padding: 16px;
+  margin: 20px auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.title {
+  color: slateblue;
+  text-align: center;
+}
+.line {
+  margin: 16px 0px;
+  border: 1px dotted #ddd;
+}
+.lists {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  padding: 0px 10vw;
-  box-sizing: border-box;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-img {
-  width: 70%;
-  margin: 16px;
-}
-h1 {
-  font-size: 1.5em;
-  margin: 0px;
-  line-height: 1.4;
-}
-span {
-  background-color: #fef5d4;
-  padding: 5px 10px;
-  border-radius: 30px;
-  border: #dadafc;
-}
-input {
-  padding: 10px;
-  margin: 24px 0px;
-  border: 1px solid #dadafc;
-  border-radius: 30px;
-  width: 100%;
-  background-color: #dadafc55;
-}
-button {
-  padding: 8px 24px;
-  background-color: #dadafc;
-  border: #dadafc;
-  border-radius: 30px;
+.list-item {
+  padding: 16px;
+  margin: 8px;
+  background-color: aliceblue;
 }
