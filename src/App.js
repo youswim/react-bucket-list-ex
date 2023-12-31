@@ -25,12 +25,19 @@ class App extends React.Component {
     console.log(this.text.current);
   }
 
+  addBucketList = () => {
+    let list = this.state.list;
+    const new_item = this.text.current.value;
+    this.setState({list: [...list, new_item] });
+  }
+
   // 랜더 함수 안에 리액트 엘리먼트를 넣어줍니다!
   render() {
     // this 키워드를 통해 state에 접근할 수 있어요.
     console.log(this.state);
     return (
       <div className="App">
+
         <MyContainer>
           <MyTitle >내 버킷리스트</MyTitle>
           <MyLine/>
@@ -39,10 +46,10 @@ class App extends React.Component {
           <BucketList list={this.state.list} />
         </MyContainer>
 
-        <div>
-          <input type="text" ref={this.text}/>
-        </div>
-
+        <MyList>
+          <input type="text" ref={this.text}></input>
+          <button onClick={this.addBucketList}>추가하기</button>
+        </MyList>
       </div>
     );
   }
@@ -59,6 +66,16 @@ const MyApp = styled.div`
 const MyContainer = styled.div`
   max-width: 350px;
   min-height: 80vh;
+  background-color: #fff;
+  padding: 16px;
+  margin: 20px auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+`;
+
+const MyList = styled.div`
+  max-width: 350px;
+  min-height: 20vh;
   background-color: #fff;
   padding: 16px;
   margin: 20px auto;
