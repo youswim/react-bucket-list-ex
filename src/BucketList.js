@@ -1,6 +1,7 @@
 // 리액트 패키지를 불러옵니다.
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 // 함수형 컴포넌트는 이렇게 쓸 수도 있고
 // function Bucketlist(props){
 // return (
@@ -14,6 +15,11 @@ import styled from "styled-components";
 const BucketList = (props) => {
   // Quiz 1: my_list에 ['a', 'b', 'c'] 대신 부모 컴포넌트가 넘겨준 값을 넣으려면 어떻게 해야할까요?
   const my_lists = props.list;
+  const navigate = useNavigate();
+
+  const navigateToDetail = () => {
+    navigate("/detail");
+  }
   console.log(props);
   // 컴포넌트가 뿌려줄 ui 요소(리엑트 엘리먼트라고 불러요.)를 반환해줍니다.
   return (
@@ -26,7 +32,7 @@ const BucketList = (props) => {
           // 콘솔을 확인해봅시다 :)
           console.log(list);
           return (
-            <MyListItem>
+            <MyListItem onClick={navigateToDetail}>
               {list}
             </MyListItem>
           );
