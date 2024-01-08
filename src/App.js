@@ -9,6 +9,7 @@ import "./scss_ex.scss";
 import styled from "styled-components";
 
 import Detail from "./Detail";
+import NotFound from "./NotFound";
 
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
 class App extends React.Component {
@@ -48,6 +49,7 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<BucketList list={this.state.list} />}/>
             <Route path="/detail" element={<Detail/>} />
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
         </MyContainer>
 
