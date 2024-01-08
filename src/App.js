@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route, useParams, Link, useNavigate } from "react-router-dom";
 import logo from "./logo.svg";
 // BucketList 컴포넌트를 import 해옵니다.
 // import [컴포넌트 명] from [컴포넌트가 있는 파일경로];
@@ -6,6 +7,8 @@ import BucketList from "./BucketList";
 // import "./style.css";
 import "./scss_ex.scss";
 import styled from "styled-components";
+
+import Detail from "./Detail";
 
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
 class App extends React.Component {
@@ -19,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("this.text:")
+    console.log("this.text:");
     console.log(this.text);
     console.log("this.text.current:");
     console.log(this.text.current);
@@ -28,8 +31,8 @@ class App extends React.Component {
   addBucketList = () => {
     let list = this.state.list;
     const new_item = this.text.current.value;
-    this.setState({list: [...list, new_item] });
-  }
+    this.setState({ list: [...list, new_item] });
+  };
 
   // 랜더 함수 안에 리액트 엘리먼트를 넣어줍니다!
   render() {
@@ -37,13 +40,15 @@ class App extends React.Component {
     console.log(this.state);
     return (
       <div className="App">
-
         <MyContainer>
-          <MyTitle >내 버킷리스트</MyTitle>
-          <MyLine/>
+          <MyTitle>내 버킷리스트</MyTitle>
+          <MyLine />
           {/* 컴포넌트를 넣어줍니다. */}
           {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
-          <BucketList list={this.state.list} />
+          <Routes>
+            <Route path="/" element={<BucketList list={this.state.list} />}/>
+            <Route path="/detail" element={<Detail/>} />
+          </Routes>
         </MyContainer>
 
         <MyList>
