@@ -11,6 +11,22 @@ import styled from "styled-components";
 import Detail from "./Detail";
 import NotFound from "./NotFound";
 
+import { connect } from "react-redux";
+import { loadBucket, createBucket } from "./redux/modules/bucket";
+
+const mapStateTopProps = (state) => ({
+  bucket_list: state.bucket.list,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  load: ()=>{
+    dispatch(loadBucket());
+  },
+  create: (new_item) => {
+    dispatch(createBucket(new_item));
+  }
+});
+
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +43,8 @@ class App extends React.Component {
     console.log(this.text);
     console.log("this.text.current:");
     console.log(this.text.current);
+    console.log("this.props");
+    console.log(this.props);
   }
 
   addBucketList = () => {
@@ -100,4 +118,4 @@ const MyLine = styled.hr`
   border: 1px dotted #ddd;
 `;
 
-export default App;
+export default connect(mapStateTopProps, mapDispatchToProps)(App);
