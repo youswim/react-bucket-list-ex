@@ -33,7 +33,6 @@ class App extends React.Component {
     super(props);
     // App 컴포넌트의 state를 정의해줍니다.
     this.state = {
-      list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
     };
     this.text = React.createRef();
   }
@@ -48,7 +47,7 @@ class App extends React.Component {
   }
 
   addBucketList = () => {
-    let list = this.state.list;
+    let list = this.props.bucket_list;
     const new_item = this.text.current.value;
     this.setState({ list: [...list, new_item] });
   };
@@ -56,7 +55,7 @@ class App extends React.Component {
   // 랜더 함수 안에 리액트 엘리먼트를 넣어줍니다!
   render() {
     // this 키워드를 통해 state에 접근할 수 있어요.
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div className="App">
         <MyContainer>
@@ -65,7 +64,7 @@ class App extends React.Component {
           {/* 컴포넌트를 넣어줍니다. */}
           {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
           <Routes>
-            <Route path="/" element={<BucketList list={this.state.list} />}/>
+            <Route path="/" element={<BucketList list={this.props.bucket_list} />}/>
             <Route path="/detail" element={<Detail/>} />
             <Route path="*" element={<NotFound/>}/>
           </Routes>
