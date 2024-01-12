@@ -1,8 +1,8 @@
 import {createStore, combineReducers} from "redux"
 import bucket from "./modules/bucket";
-import {createBrowserHistory} from "history"
+// import {createBrowserHistory} from "history"
 
-export const history = createBrowserHistory();
+// export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({bucket});
 const store = createStore(rootReducer);
