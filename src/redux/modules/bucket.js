@@ -18,6 +18,8 @@ const initialState = {
 // import React from "react"
 // export에 default가 없다면, 중괄호를 추가해야 불러올 수 있다
 // import {Router} from "react-router-dom"
+// loadBucket에는 사실 bucket을 전달하지 않아도 된다.
+// 다만, 모양을 맞춰주기 위해서 bucket을 전달해주었다.
 export const loadBucket = (bucket) => {
     return {type: LOAD, bucket};
 }
@@ -45,12 +47,7 @@ export default function reducer(state = initialState, action = {}) {
         const new_bucket_list = [...state.list, action.bucket];
         return {list: new_bucket_list};
     }
+    default:
+        return state;
   }
-}
-
-// side effects, only as applicable
-// e.g. thunks, epics, etc
-export function getWidget() {
-  return (dispatch) =>
-    get("/widget").then((widget) => dispatch(updateWidget(widget)));
 }
