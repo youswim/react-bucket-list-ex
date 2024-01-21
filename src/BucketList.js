@@ -21,8 +21,8 @@ const BucketList = (props) => {
   const my_lists = props.list;
   const navigate = useNavigate();
 
-  const navigateToDetail = () => {
-    navigate("/detail");
+  const navigateToDetail = (index) => {
+    navigate("/detail/" + index);
   }
   console.log(props);
   // 컴포넌트가 뿌려줄 ui 요소(리엑트 엘리먼트라고 불러요.)를 반환해줍니다.
@@ -36,7 +36,7 @@ const BucketList = (props) => {
           // 콘솔을 확인해봅시다 :)
           console.log(list);
           return (
-            <MyListItem onClick={navigateToDetail}>
+            <MyListItem onClick={()=>navigateToDetail(index)}>
               {list}
             </MyListItem>
           );

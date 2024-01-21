@@ -66,7 +66,8 @@ class App extends React.Component {
           {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
           <Routes>
             <Route path="/" element={<BucketList list={this.props.bucket_list} />}/>
-            <Route path="/detail" element={<Detail/>} />
+            {/* 아래는 상세 페이지 + 상품 index를 라우팅하기 위한 url path 정의 및 컴포넌트 연결*/}
+            <Route path="/detail/:index" element={<Detail/>} /> 
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </MyContainer>
