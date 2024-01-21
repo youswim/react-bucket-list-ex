@@ -14,10 +14,12 @@ import NotFound from "./NotFound";
 import { connect } from "react-redux";
 import { loadBucket, createBucket } from "./redux/modules/bucket";
 
+// 리덕스 스토어에 있는 상태값을 props 형태로 컴포넌트에 넣어준다.
 const mapStateTopProps = (state) => ({
   bucket_list: state.bucket.list,
 })
 
+// 액션이 발생하는지를 확인해줌
 const mapDispatchToProps = (dispatch) => ({
   load: ()=>{
     dispatch(loadBucket());
@@ -47,9 +49,8 @@ class App extends React.Component {
   }
 
   addBucketList = () => {
-    let list = this.props.bucket_list;
     const new_item = this.text.current.value;
-    this.setState({ list: [...list, new_item] });
+    this.props.create(new_item);
   };
 
   // 랜더 함수 안에 리액트 엘리먼트를 넣어줍니다!
