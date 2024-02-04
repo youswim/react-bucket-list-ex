@@ -5,6 +5,7 @@
 // 2. 사용자가 버킷리스트 목록을 추가할 수 있는 기능
 const LOAD = "bucket/LOAD"; // Action이름은 대문자. module이름은 소문자
 const CREATE = "bucket/CREATE";
+const DELETE = "bucket/DELETE";
 
 // initialState
 const initialState = {
@@ -30,6 +31,10 @@ export const createBucket = (bucket) => {
 }
 
 
+export const deleteBucket = (bucket) => {
+  return {type: DELETE, bucket};
+}
+
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
@@ -47,6 +52,15 @@ export default function reducer(state = initialState, action = {}) {
         const new_bucket_list = [...state.list, action.bucket];
         return {list: new_bucket_list};
     }
+    case "bucket/DELETE": {
+      const bucket_list = state.list.filter((l, idx) => {
+        if(idx != action.bucket) {
+          return l;
+        }
+      });
+      return {list: bucket_list};
+    }
+
     default:
         return state;
   }
